@@ -6,7 +6,9 @@ class Register extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: GFAppBar(title: Text("We're Board")),
+      appBar: GFAppBar(title: Text("We're Board"),
+                      leading: null,
+                       automaticallyImplyLeading: false),
       body: FormBuilder(child: 
         Column(children: 
           <Widget>[

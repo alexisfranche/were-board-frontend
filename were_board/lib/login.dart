@@ -9,8 +9,9 @@ const users = const {
   'hunter@gmail.com': 'hunter',
 };
 
+ BuildContext init;
+
 class LoginScreen extends StatelessWidget {
-  BuildContext init;
   Duration get loginTime => Duration(milliseconds: 2250);
 
     Future<String> _createUser(LoginData data) {
