@@ -16,6 +16,9 @@ class LoginScreen extends StatelessWidget {
 
     Future<String> _createUser(LoginData data) {
     return Future.delayed(loginTime).then((_) {
+      if (users.containsKey(data.name)) {
+        return 'Username already exists';
+      }
       Navigator.push(init, MaterialPageRoute(builder: (context) => Register()));
       return null;
     });
