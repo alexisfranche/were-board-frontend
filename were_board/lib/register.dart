@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:getflutter/getflutter.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:http/http.dart' as http;
+import 'package:were_board/home_tabs.dart';
 import 'login.dart';
+import 'dart:convert';
 
 class Register extends StatelessWidget{
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
+  final String url = 'https://were-board.herokuapp.com/';
+  final String email;
+  final String password;
+
+  Register({this.email, this.password});
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +36,12 @@ class Register extends StatelessWidget{
               FormBuilderValidators.max(70),
             ],
           ),
-          FormBuilderTextField(
+          /*FormBuilderTextField(
             attribute: "age",
             decoration: InputDecoration(labelText: "Age"),
             validators: [
               FormBuilderValidators.numeric(),
-              FormBuilderValidators.max(70),
+              FormBuilderValidators.max(4),
             ],
           ),
           FormBuilderTextField(
@@ -42,10 +50,19 @@ class Register extends StatelessWidget{
             validators: [
               FormBuilderValidators.max(70),
             ],
-          ),
+          ),*/
           GFButton(text: "Create Account", 
-          onPressed: () {
-            
+          onPressed: () async {
+            var body = {'name': _fbKey.currentState.fields['name'].currentState.value, 'email': this.email, 'password': this.password};
+            var bodyJSON = json.encode(body);
+            var response = await http.post(url+'user',
+            headers: {'Content-Type': 'application/json'},
+            body: bodyJSON);
+            if(response.statusCode == 200){
+              Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => HomePage()));
+            }
+            return null;
             }),
           ]
         )
