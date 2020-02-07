@@ -45,7 +45,7 @@ class HomePage extends StatelessWidget{
                Container(child: Icon(Icons.casino), color: Colors.white,),
                //ViewProfile(), // Un-comment to test view profile page
                Container(child: Icon(Icons.event_available), color: Colors.white,),
-               Container(child: Icon(Icons.person), color: Colors.white,),
+               Container(child: ViewProfile()),
                Container(child: Icon(Icons.settings), color: Colors.white,),
              ],
             ),

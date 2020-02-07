@@ -5,13 +5,7 @@ import 'dart:convert';
 import 'home_tabs.dart';
 import 'register.dart';
 
-
-const users = const {
-  'aa@gmail.com': '12345',
-  'hunter@gmail.com': 'hunter',
-};
-
- BuildContext init;
+BuildContext init;
 
 class LoginScreen extends StatelessWidget {
   final String url = 'https://were-board.herokuapp.com/';
@@ -50,9 +44,6 @@ class LoginScreen extends StatelessWidget {
 
   Future<String> _recoverPassword(String name) {
     return Future.delayed(loginTime).then((_) {
-      if (!users.containsKey(name)) {
-        return 'Username not exists';
-      }
       return null;
     });
   }
