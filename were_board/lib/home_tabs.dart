@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget{
            tabBarView: GFTabBarView(
              children: <Widget>[
 
-               //TODO: replace Icon widgets by the appropriate widgets (pages) that need to be displayed.
+               //replace Icon widgets by the appropriate widgets (pages) that need to be displayed.
                Container(child: Icon(Icons.casino), color: Colors.white,),
                //ViewProfile(), // Un-comment to test view profile page
                Container(child: Icon(Icons.event_available), color: Colors.white,),
