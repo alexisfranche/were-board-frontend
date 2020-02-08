@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:getflutter/getflutter.dart';
 
 import 'view_profile.dart';
+import 'my_profile.dart';
 
 class HomePage extends StatelessWidget{
   @override
@@ -44,6 +45,7 @@ class HomePage extends StatelessWidget{
                //replace Icon widgets by the appropriate widgets (pages) that need to be displayed.
                Container(child: Icon(Icons.casino), color: Colors.white,),
                //ViewProfile(), // Un-comment to test view profile page
+               //MyProfile(), // Un-comment to test view profile page
                Container(child: Icon(Icons.event_available), color: Colors.white,),
                Container(child: Icon(Icons.person), color: Colors.white,),
                Container(child: Icon(Icons.settings), color: Colors.white,),
