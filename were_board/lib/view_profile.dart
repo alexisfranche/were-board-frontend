@@ -3,9 +3,6 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'edit_name.dart';
-import 'edit_password.dart';
-import 'edit_email.dart';
 
 
 class ViewProfile extends StatefulWidget {
@@ -34,7 +31,7 @@ class ViewProfileState extends State<ViewProfile> {
   @override
   void initState() {
     super.initState();
-    user = fetchUser("21"); // This will be used when we connect the UI to the backend (6 is just a test ID)
+    user = fetchUser("6"); // This will be used when we connect the UI to the backend (6 is just a test ID)
   }
 
   @override
@@ -70,37 +67,6 @@ class ViewProfileState extends State<ViewProfile> {
                 new Divider(height: _height * 4,color: Colors.black,),
                 new SizedBox(height: _radius / 4),
                 new Text('Attended Events', style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black),),
-                  new Row(
-                  children: <Widget>[
-                    Expanded(child: 
-                    new RaisedButton(
-                      onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => EditName() ));
-                      }, 
-                      child: Text('Edit Name'),
-                      color: Colors.lightBlueAccent,
-                      )
-                    ,),
-                    Expanded(child: 
-                      new RaisedButton(
-                        onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => EditEmail() ));
-                        }, 
-                        child: Text('Edit Email'),
-                        color: Colors.lightBlueAccent,
-                        )
-                    ,),
-                    Expanded(child:
-                     new RaisedButton(
-                        onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => EditPassword() ));
-                        }, 
-                        child: Text('Edit Password'),
-                        color: Colors.lightBlueAccent,
-                        )
-                    ,)
-                  ]
-                )
               ]
           )
         )
