@@ -31,7 +31,7 @@ class MyProfileState extends State<MyProfile> {
   @override
   void initState() {
     super.initState();
-    user = fetchUser("6"); // This will be used when we connect the UI to the backend (6 is just a test ID)
+    user = fetchUser("20"); // This will be used when we connect the UI to the backend (6 is just a test ID)
   }
 
   @override
@@ -66,7 +66,18 @@ class MyProfileState extends State<MyProfile> {
                     }),
                 new Divider(height: _height * 4,color: Colors.black,),
                 new SizedBox(height: _radius / 4),
-                new Text('Description', style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black),),
+                new Text('Description', style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 35, color: Colors.black),),
+                
+                FutureBuilder<User>(
+                    future: user,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return Text(snapshot.data.description, style: TextStyle(fontWeight: FontWeight.normal, height: _height, fontSize: 20));
+                      } else if (snapshot.hasError) {
+                        return Text("${snapshot.error}");
+                      }
+                      return CircularProgressIndicator();
+                    }),
               ]
           )
         )
@@ -78,10 +89,13 @@ class MyProfileState extends State<MyProfile> {
 
 class User {
   final String name;
-  User({this.name});
+  final String description;
+
+  User({this.name, this.description});
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
       name: json['name'],
+      description: json['description'],
     );
   }
 }
