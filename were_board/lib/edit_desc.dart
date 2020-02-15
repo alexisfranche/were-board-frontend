@@ -6,18 +6,19 @@ import 'dart:convert';
 import 'home_tabs.dart';
 
 
-class EditName extends StatelessWidget{
+
+class EditDesc extends StatelessWidget{
 
   final String email;
-  String url = 'https://were-board.herokuapp.com/user/profile/name/';
+  String url = 'https://were-board.herokuapp.com/user/profile/desc/';
   final myController = TextEditingController();
 
-  EditName({this.email});
+  EditDesc({this.email});
 
 
   Future<void> upName(String arg) async{
     
-    var body = {'name': arg};
+    var body = {'description': arg};
     var jso = json.encode(body);
     http.Response response = await http.put(url+this.email,
     headers:{'Content-Type': 'application/json'},
@@ -34,20 +35,22 @@ class EditName extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      appBar: AppBar(title: Text('Edit Name')),
+      appBar: AppBar(title: Text('Edit Description')),
       body:
        Center(
         child: Column
         (children: <Widget>[
           TextField( 
             controller: myController,
+            keyboardType: TextInputType.multiline,
+            maxLines: null,
             decoration: InputDecoration(
-            labelText: "New name",
+            labelText: "New description",
             enabledBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: Colors.blue, width: 2.0),
               borderRadius: BorderRadius.circular(25.0)
             ),
-            hintText: "Enter new name"
+            hintText: "Enter new description"
           ),
           ),
           FlatButton(

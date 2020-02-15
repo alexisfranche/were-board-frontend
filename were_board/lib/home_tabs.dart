@@ -5,6 +5,10 @@ import 'view_profile.dart';
 import 'my_profile.dart';
 
 class HomePage extends StatelessWidget{
+  final String email;
+  
+  HomePage({this.email});
+
   @override
   Widget build(BuildContext context){
     return GFTabs(
@@ -12,7 +16,7 @@ class HomePage extends StatelessWidget{
           tabBarHeight: 85.0,
           tabBarColor: Colors.lightBlueAccent,
           initialIndex: 0,
-          length: 4,
+          length: 5,
           tabs: <Widget>[
             Tab(
               icon: Icon(Icons.casino),
@@ -29,9 +33,14 @@ class HomePage extends StatelessWidget{
               Tab(
                 icon: Icon(Icons.person),
                 child: Text(
-                  "Profile",
+                  "Search Profile",
                 ),
               ),
+              Tab(
+                icon: Icon(Icons.person_outline),
+                child: Text(
+                  "My Profile"),
+                  ),
               Tab(
                 icon: Icon(Icons.settings),
                 child: Text(
@@ -47,7 +56,8 @@ class HomePage extends StatelessWidget{
                //ViewProfile(), // Un-comment to test view profile page
                //MyProfile(), // Un-comment to test view profile page
                Container(child: Icon(Icons.event_available), color: Colors.white,),
-               Container(child: ViewProfile()),
+               Container(child: ViewProfile(email: this.email)),
+               Container(child: MyProfile(email: this.email)),
                Container(child: Icon(Icons.settings), color: Colors.white,),
              ],
             ),

@@ -3,19 +3,25 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'edit_desc.dart';
+import 'edit_name.dart';
 
 
 class MyProfile extends StatefulWidget {
+  final String email;
+
+  MyProfile({this.email});
+
   @override
-  MyProfileState createState() => MyProfileState();
+  MyProfileState createState() => MyProfileState(email: this.email);
 
 }
 
 
-Future<User> fetchUser(String userId) async {
+Future<User> fetchUser(String emailStr) async {
   final response =
-  await http.get('https://were-board.herokuapp.com/user/profile/' + userId);
-  print("respomse : " + response.body);
+  await http.get('https://were-board.herokuapp.com/email/' + emailStr);
+  print("response : " + response.body);
   if (response.statusCode == 200) {
     // If the call to the server was successful, parse the JSON.
     return User.fromJson(json.decode(response.body));
@@ -26,12 +32,16 @@ Future<User> fetchUser(String userId) async {
 }
 
 class MyProfileState extends State<MyProfile> {
+  final String email;
+
+  MyProfileState({this.email});
+
   Future<User> user;
 
   @override
   void initState() {
     super.initState();
-    user = fetchUser("20"); // This will be used when we connect the UI to the backend (6 is just a test ID)
+    user = fetchUser(widget.email); // This will be used when we connect the UI to the backend (6 is just a test ID)
   }
 
   @override
@@ -71,13 +81,40 @@ class MyProfileState extends State<MyProfile> {
                 FutureBuilder<User>(
                     future: user,
                     builder: (context, snapshot) {
-                      if (snapshot.hasData) {
+                      if (snapshot.data.description == null) {
+                        return Text('Add description');
+                      } 
+                      else if (snapshot.hasData){
                         return Text(snapshot.data.description, style: TextStyle(fontWeight: FontWeight.normal, height: _height, fontSize: 20));
-                      } else if (snapshot.hasError) {
+                      }
+                      else if (snapshot.hasError) {
                         return Text("${snapshot.error}");
                       }
                       return CircularProgressIndicator();
                     }),
+                    
+                     new Row(
+                    children: <Widget>[
+                    Expanded(child: 
+                    new RaisedButton(
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => EditName(email: this.email) ));
+                      }, 
+                      child: Text('Edit Name'),
+                      color: Colors.lightBlueAccent,
+                      )
+                    ,),
+                    Expanded(child: 
+                      new RaisedButton(
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => EditDesc(email: this.email) ));
+                        }, 
+                        child: Text('Edit Description'),
+                        color: Colors.lightBlueAccent,
+                        )
+                    ,)
+                  ]
+                ),           
               ]
           )
         )
