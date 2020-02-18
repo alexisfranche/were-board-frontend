@@ -32,7 +32,7 @@ class LoginScreen extends StatelessWidget {
       if(response.statusCode == 200){
         Navigator.push(
                       init,
-                      MaterialPageRoute(builder: (context) => HomePage()),
+                      MaterialPageRoute(builder: (context) => HomePage(email: data.name)),
             );
       }else{
         return 'Email or password wrong!';

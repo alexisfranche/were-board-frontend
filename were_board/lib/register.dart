@@ -36,21 +36,7 @@ class Register extends StatelessWidget{
               FormBuilderValidators.max(70),
             ],
           ),
-          /*FormBuilderTextField(
-            attribute: "age",
-            decoration: InputDecoration(labelText: "Age"),
-            validators: [
-              FormBuilderValidators.numeric(),
-              FormBuilderValidators.max(4),
-            ],
-          ),
-          FormBuilderTextField(
-            attribute: "Address",
-            decoration: InputDecoration(labelText: "Address"),
-            validators: [
-              FormBuilderValidators.max(70),
-            ],
-          ),*/
+         
           GFButton(text: "Create Account", 
           onPressed: () async {
             var body = {'name': _fbKey.currentState.fields['name'].currentState.value, 'email': this.email, 'password': this.password};
@@ -60,7 +46,7 @@ class Register extends StatelessWidget{
             body: bodyJSON);
             if(response.statusCode == 200){
               Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => HomePage()));
+                      MaterialPageRoute(builder: (context) => HomePage(email: this.email)));
             }
             return null;
             }),

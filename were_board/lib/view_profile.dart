@@ -6,15 +6,17 @@ import 'package:http/http.dart' as http;
 
 
 class ViewProfile extends StatefulWidget {
+  final String email;
+  ViewProfile({this.email});
   @override
   ViewProfileState createState() => ViewProfileState();
 
 }
 
 
-Future<User> fetchUser(String userId) async {
+Future<User> fetchUser(String emailStr) async {
   final response =
-  await http.get('https://were-board.herokuapp.com/user/' + userId);
+  await http.get('https://were-board.herokuapp.com/email/' + emailStr);
   print("respomse : " + response.body);
   if (response.statusCode == 200) {
     // If the call to the server was successful, parse the JSON.
@@ -31,7 +33,7 @@ class ViewProfileState extends State<ViewProfile> {
   @override
   void initState() {
     super.initState();
-    user = fetchUser("6"); // This will be used when we connect the UI to the backend (6 is just a test ID)
+    user = fetchUser(widget.email); // This will be used when we connect the UI to the backend (6 is just a test ID)
   }
 
   @override
