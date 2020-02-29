@@ -21,7 +21,7 @@ class MyProfile extends StatefulWidget {
 Future<User> fetchUser(String emailStr) async {
   final response =
   await http.get('https://were-board.herokuapp.com/email/' + emailStr);
-  print("response : " + response.body);
+  //print("response : " + response.body);
   if (response.statusCode == 200) {
     // If the call to the server was successful, parse the JSON.
     return User.fromJson(json.decode(response.body));
@@ -41,7 +41,7 @@ class MyProfileState extends State<MyProfile> {
   @override
   void initState() {
     super.initState();
-    user = fetchUser(widget.email); // This will be used when we connect the UI to the backend (6 is just a test ID)
+    user = fetchUser(widget.email);
   }
 
   @override
@@ -72,18 +72,9 @@ class MyProfileState extends State<MyProfile> {
                       } else if (snapshot.hasError) {
                         return Text("${snapshot.error}");
                       }
-                      return CircularProgressIndicator();
-                    }),
-                new Divider(height: _height * 4,color: Colors.black,),
-                new SizedBox(height: _radius / 4),
-                new Text('Description', style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 35, color: Colors.black),),
-                
-                FutureBuilder<User>(
-                    future: user,
-                    builder: (context, snapshot) {
-                      if (snapshot.data.description == null) {
+                      else if (snapshot.hasData && snapshot.data.description == null) {
                         return Text('Add description');
-                      } 
+                      }
                       else if (snapshot.hasData){
                         return Text(snapshot.data.description, style: TextStyle(fontWeight: FontWeight.normal, height: _height, fontSize: 20));
                       }
@@ -92,6 +83,24 @@ class MyProfileState extends State<MyProfile> {
                       }
                       return CircularProgressIndicator();
                     }),
+                new Divider(height: _height * 4,color: Colors.black,),
+                new SizedBox(height: _radius / 4),
+                new Text('Description', style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 35, color: Colors.black),),
+                
+                /* FutureBuilder<User>(
+                    future: user,
+                    builder: (context, snapshot) {
+                      if (snapshot.data.description == null) {
+                        return Text('Add description');
+                      }
+                      else if (snapshot.hasData){
+                        return Text(snapshot.data.description, style: TextStyle(fontWeight: FontWeight.normal, height: _height, fontSize: 20));
+                      }
+                      else if (snapshot.hasError) {
+                        return Text("${snapshot.error}");
+                      }
+                      return CircularProgressIndicator();
+                    }), */
                     
                      new Row(
                     children: <Widget>[

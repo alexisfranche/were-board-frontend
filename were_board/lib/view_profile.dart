@@ -14,10 +14,10 @@ class ViewProfile extends StatefulWidget {
 }
 
 
-Future<User> fetchUser(String emailStr) async {
+Future<User> fetchUser(String nameStr) async {
   final response =
-  await http.get('https://were-board.herokuapp.com/email/' + emailStr);
-  print("respomse : " + response.body);
+  await http.get('https://were-board.herokuapp.com/email/' + nameStr);
+  //print("response : " + response.body);
   if (response.statusCode == 200) {
     // If the call to the server was successful, parse the JSON.
     return User.fromJson(json.decode(response.body));
@@ -33,7 +33,7 @@ class ViewProfileState extends State<ViewProfile> {
   @override
   void initState() {
     super.initState();
-    user = fetchUser(widget.email); // This will be used when we connect the UI to the backend (6 is just a test ID)
+    user = fetchUser(widget.email);
   }
 
   @override
@@ -45,7 +45,9 @@ class ViewProfileState extends State<ViewProfile> {
       new Container(color: Colors.white,),
       new Image.network(imgUrl, fit: BoxFit.fill,),
       new Scaffold(
-        appBar: AppBar(
+          resizeToAvoidBottomPadding: false,
+          resizeToAvoidBottomInset: false,
+          appBar: AppBar(
           title: Text("View profile"),
           backgroundColor: Colors.lightBlueAccent,
           automaticallyImplyLeading: false,
