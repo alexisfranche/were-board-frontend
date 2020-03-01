@@ -1,31 +1,17 @@
+import 'package:flutter/material.dart';
+import 'package:getflutter/getflutter.dart';
+
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:flutter/material.dart';
 
-class ApplyToEvent extends StatefulWidget {
+class ViewEvent extends StatefulWidget {
   final String eventId;
 
-  ApplyToEvent(
+  ViewEvent(
       {this.eventId}); // Need a way to add event id to constructor from view events page (get the label element from the list?)
   @override
-  ApplyToEventState createState() => ApplyToEventState();
-}
-
-class ApplyToEventState extends State<ApplyToEvent> {
-  Future<Event> event;
-
-  @override
-  void initState() {
-    super.initState();
-    event = fetchEvent(widget.eventId);
-  }
-
-  /* Need get event API to be implemented first*/
-  @override
-  Widget build(BuildContext context) {
-    return new Container();
-  }
+  ViewEventState createState() => ViewEventState();
 }
 
 class Event {
@@ -43,6 +29,21 @@ class Event {
       address: json['address'],
       datetime: json['datetime'],
     );
+  }
+}
+
+class ViewEventState extends State<ViewEvent> {
+  Future<Event> event;
+
+  @override
+  void initState() {
+    super.initState();
+    event = fetchEvent(widget.eventId);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container();
   }
 }
 
