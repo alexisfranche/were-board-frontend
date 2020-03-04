@@ -50,6 +50,9 @@ class ViewEventState extends State<ViewEvent> {
   Future<Event> event;
   Future<User> user;
 
+  String retrievedUserId;
+  String retrievedEventId;
+
   ViewEventState({this.eventId, this.managerId});
 
   @override
@@ -78,6 +81,7 @@ class ViewEventState extends State<ViewEvent> {
               future: event,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
+                  retrievedEventId = snapshot.data.id.toString();
                   return new Column(
                     children: <Widget>[
                       Text(snapshot.data.name,
@@ -132,6 +136,7 @@ class ViewEventState extends State<ViewEvent> {
               future: user,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
+                  retrievedUserId = snapshot.data.userId.toString();
                   return new Column(
                     children: <Widget>[
                       Text(
@@ -166,7 +171,9 @@ class ViewEventState extends State<ViewEvent> {
               }),
           Container(
             child: (FlatButton(
-              onPressed: () {},
+              onPressed: () {
+                joinEvent(retrievedUserId, retrievedEventId);
+              },
               color: Colors.teal,
               textColor: Colors.white,
               disabledColor: Colors.red,
@@ -197,5 +204,17 @@ Future<Event> fetchEvent(String eventId) async {
   } else {
     // If that call was not successful, throw an error.
     throw Exception('Failed to load post');
+  }
+}
+
+Future<void> joinEvent(String userId, String eventId) async {
+  var body = {'event_id': eventId, 'user_id': userId};
+  var jso = json.encode(body);
+  http.Response response = await http.post(
+      "https://were-board.herokuapp.com/join",
+      headers: {'Content-Type': 'application/json'},
+      body: jso);
+  if (response.statusCode == 200) {
+    print("success");
   }
 }

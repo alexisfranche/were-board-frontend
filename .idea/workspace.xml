@@ -9,11 +9,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b10eafc9-3619-43d7-88f0-6a8fe4763fa7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/were_board/lib/edit_desc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/were_board/lib/edit_desc.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/were_board/lib/edit_name.dart" beforeDir="false" afterPath="$PROJECT_DIR$/were_board/lib/edit_name.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/were_board/lib/home_tabs.dart" beforeDir="false" afterPath="$PROJECT_DIR$/were_board/lib/home_tabs.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/were_board/lib/my_profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/were_board/lib/my_profile.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/were_board/lib/view_all_events.dart" beforeDir="false" afterPath="$PROJECT_DIR$/were_board/lib/view_all_events.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/were_board/lib/view_event.dart" beforeDir="false" afterPath="$PROJECT_DIR$/were_board/lib/view_event.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/were_board/lib/view_profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/were_board/lib/view_profile.dart" afterDir="false" />
     </list>
@@ -33,7 +28,7 @@
         <entry file="file://$PROJECT_DIR$/were_board/lib/home_tabs.dart">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="514">
-              <caret line="50" column="24" lean-forward="true" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
+              <caret line="50" column="24" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -44,20 +39,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/were_board/lib/view_all_events.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-506">
-              <caret line="60" column="23" lean-forward="true" selection-start-line="60" selection-start-column="23" selection-end-line="60" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/were_board/lib/view_event.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2278">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="327">
+              <caret line="103" column="43" selection-start-line="103" selection-start-column="43" selection-end-line="103" selection-end-column="43" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -66,10 +49,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/were_board/lib/view_event.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="416">
+              <caret line="173" column="29" selection-start-line="173" selection-start-column="29" selection-end-line="173" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/were_board/lib/view_profile.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="514">
-              <caret line="102" selection-start-line="102" selection-end-line="113" selection-end-column="14" />
+            <state relative-caret-position="429">
+              <caret line="123" column="13" lean-forward="true" selection-start-line="123" selection-start-column="13" selection-end-line="123" selection-end-column="13" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -80,7 +75,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/were_board/lib/my_profile.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1781">
+            <state relative-caret-position="-1475">
               <caret line="31" column="5" selection-start-line="31" selection-end-line="32" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
@@ -92,8 +87,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/were_board/lib/edit_name.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="816">
-              <caret line="48" column="9" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
+            <state relative-caret-position="306">
+              <caret line="18" column="65" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="65" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -104,8 +99,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/were_board/lib/edit_desc.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
+            <state relative-caret-position="123">
+              <caret line="19" selection-start-line="19" selection-end-line="22" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -147,9 +142,9 @@
         <option value="$PROJECT_DIR$/were_board/lib/my_profile.dart" />
         <option value="$PROJECT_DIR$/were_board/lib/edit_name.dart" />
         <option value="$PROJECT_DIR$/were_board/lib/edit_desc.dart" />
+        <option value="$PROJECT_DIR$/were_board/lib/view_profile.dart" />
         <option value="$PROJECT_DIR$/were_board/lib/view_all_events.dart" />
         <option value="$PROJECT_DIR$/were_board/lib/view_event.dart" />
-        <option value="$PROJECT_DIR$/were_board/lib/view_profile.dart" />
       </list>
     </option>
   </component>
@@ -414,23 +409,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/were_board/lib/edit_name.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="48" column="9" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/were_board/lib/edit_desc.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/were_board/lib/login.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="867">
@@ -441,17 +419,17 @@
     <entry file="file://$PROJECT_DIR$/were_board/lib/home_tabs.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="514">
-          <caret line="50" column="24" lean-forward="true" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
+          <caret line="50" column="24" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/were_board/lib/view_all_events.dart">
+    <entry file="file://$PROJECT_DIR$/were_board/lib/edit_name.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-506">
-          <caret line="60" column="23" lean-forward="true" selection-start-line="60" selection-start-column="23" selection-end-line="60" selection-end-column="23" />
+        <state relative-caret-position="306">
+          <caret line="18" column="65" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="65" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -460,7 +438,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/were_board/lib/my_profile.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1781">
+        <state relative-caret-position="-1475">
           <caret line="31" column="5" selection-start-line="31" selection-end-line="32" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
@@ -468,22 +446,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/were_board/lib/view_event.dart">
+    <entry file="file://$PROJECT_DIR$/were_board/lib/edit_desc.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2278">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        <state relative-caret-position="123">
+          <caret line="19" selection-start-line="19" selection-end-line="22" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/were_board/lib/view_profile.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="123" column="13" lean-forward="true" selection-start-line="123" selection-start-column="13" selection-end-line="123" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/were_board/lib/view_all_events.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="103" column="43" selection-start-line="103" selection-start-column="43" selection-end-line="103" selection-end-column="43" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/were_board/lib/view_profile.dart">
+    <entry file="file://$PROJECT_DIR$/were_board/lib/view_event.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="514">
-          <caret line="102" selection-start-line="102" selection-end-line="113" selection-end-column="14" />
+        <state relative-caret-position="416">
+          <caret line="173" column="29" selection-start-line="173" selection-start-column="29" selection-end-line="173" selection-end-column="29" />
           <folding>
-            <element signature="e#0#20#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -121,14 +121,16 @@ class User {
   String name;
   String email;
   String bio;
+  int userId;
 
-  User({this.name, this.email, this.bio});
+  User({this.name, this.email, this.bio, this.userId});
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
         name: json['name'],
         email: json['email'],
-        bio: json['description']
+        bio: json['description'],
+        userId: json['id'] as int
     );
   }
 
