@@ -43,6 +43,7 @@ class MyProfileState extends State<MyProfile> {
 
   @override
   Widget build(BuildContext context) {
+    Color mySecondRed = const Color(0xFFC62828);
     final String imgUrl =
         'http://alefbetnyc.com/wp-content/uploads/2016/07/default-avatar.png';
     final double _radius = 100;
@@ -60,7 +61,7 @@ class MyProfileState extends State<MyProfile> {
             elevation: 0.0,
             title: Text("My Profile"),
             centerTitle: true,
-            backgroundColor: Colors.redAccent,
+            backgroundColor: mySecondRed,
             automaticallyImplyLeading: false,
           ),
           body: new Center(
@@ -138,7 +139,7 @@ class MyProfileState extends State<MyProfile> {
                     'Edit Name',
                     style: TextStyle(color: Colors.white),
                   ),
-                  color: Colors.redAccent,
+                  color: Colors.teal,
                 ),
               ),
               Expanded(
@@ -153,7 +154,7 @@ class MyProfileState extends State<MyProfile> {
                     'Edit Bio',
                     style: TextStyle(color: Colors.white),
                   ),
-                  color: Colors.redAccent,
+                  color: Colors.teal,
                 ),
               )
             ]),

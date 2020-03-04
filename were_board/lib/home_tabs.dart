@@ -9,6 +9,7 @@ import 'view_event.dart';
 
 class HomePage extends StatelessWidget {
   final String email;
+  Color myRed = const Color(0xFFB71C1C);
 
   HomePage({this.email});
 
@@ -29,8 +30,8 @@ class HomePage extends StatelessWidget {
         length: myTabs.length,
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.redAccent,
-            elevation: 0.0,
+            backgroundColor: myRed,
+            elevation: 20.0,
             automaticallyImplyLeading: false,
             bottom: TabBar(
               indicatorColor: Colors.white,
@@ -53,10 +54,7 @@ class HomePage extends StatelessWidget {
               ),
               Container(child: ViewProfile(email: this.email)),
               Container(child: MyProfile(email: this.email)),
-              Container(
-                child: Icon(Icons.settings),
-                color: Colors.white,
-              ),
+              Container(color: Colors.white),
             ],
           ),
         ));
