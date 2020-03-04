@@ -7,16 +7,28 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'Event.dart';
 
-class ViewAllEvents extends StatefulWidget {
-  final String eventId;
-
-  ViewAllEvents(
-      {this.eventId}); // Need a way to add event id to constructor from view events page (get the label element from the list?)
-  @override
-  ViewAllEventsState createState() => ViewAllEventsState();
+Future<User> fetchUser(String emailStr) async {
+  final response =
+      await http.get('https://were-board.herokuapp.com/email/' + emailStr);
+  //print("response : " + response.body);
+  if (response.statusCode == 200) {
+    // If the call to the server was successful, parse the JSON.
+    return User.fromJson(json.decode(response.body));
+  } else {
+    // If that call was not successful, throw an error.
+    throw Exception('Failed to load profile');
+  }
 }
 
-class ViewAllEventsState extends State<ViewAllEvents> {
+class MyEvents extends StatefulWidget {
+  final String email;
+  MyEvents({this.email});
+  
+  @override
+  ViewMyEventsState createState() => ViewMyEventsState();
+}
+
+class ViewMyEventsState extends State<MyEvents> {
   Future<List<Event>> events;
   Future<List<User>> users;
   Future<User> user;
@@ -34,10 +46,17 @@ class ViewAllEventsState extends State<ViewAllEvents> {
         appBar: AppBar(
           centerTitle: true,
           elevation: 0.0,
-          title: Text("Available events"),
+          title: Text("My Events"),
           backgroundColor: Colors.redAccent,
           automaticallyImplyLeading: false,
         ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: (){
+
+          },
+          child: Icon(Icons.add),
+          backgroundColor: Colors.red,
+          ),
         body: new FutureBuilder(
             future: events,
             builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
@@ -71,7 +90,13 @@ class ViewAllEventsState extends State<ViewAllEvents> {
                           //new Text('${availableEvents[index].managerId}', style: TextStyle(height: _height)),
 
                           new FlatButton(
-                            onPressed: null,
+                            onPressed: () async {
+                              int id = availableEvents[index].eventId;
+                              final response = await http.delete('https://were-board.herokuapp.com/event/${id.toString()}');
+                              setState(() {
+                                events = fetchEvents();
+                              });
+                            },
                             // Simply call joinEvent for event 'availableEvents[index]'
                             color: Colors.redAccent,
                             textColor: Colors.white,
@@ -79,7 +104,7 @@ class ViewAllEventsState extends State<ViewAllEvents> {
                             disabledTextColor: Colors.white,
                             padding: EdgeInsets.all(8.0),
                             splashColor: Colors.redAccent,
-                            child: Text('Join!'),
+                            child: Text('Cancel Event'),
                           )
                         ],
                       ));

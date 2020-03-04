@@ -113,13 +113,15 @@ class ViewProfileState extends State<ViewProfile> {
 }
 
 class User {
+  final int id;
   final String name;
 
-  User({this.name});
+  User({this.name, this.id});
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
       name: json['name'],
+      id: json['id'],
     );
   }
 }
