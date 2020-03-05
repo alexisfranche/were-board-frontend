@@ -3,6 +3,9 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'Event.dart';
+import 'create_event.dart';
+
+  int manager_id;
 
   Future<List<Event>> fetchEvents(String emailStr) async {
   List<Event> events;
@@ -12,6 +15,7 @@ import 'Event.dart';
   if (response1.statusCode == 200) {
     // If the call to the server was successful, parse the JSON.
     user = User.fromJson(json.decode(response1.body)).userId;
+    manager_id = user;
   } else {
     // If that call was not successful, throw an error.
     throw Exception('Failed to load profile');
@@ -50,7 +54,6 @@ class ViewMyEventsState extends State<MyEvents> {
 
   Future<List<Event>> events;
   Future<User> currentUser; 
-  int manager_id;
 
   @override
   Future<void> initState(){
@@ -71,7 +74,11 @@ class ViewMyEventsState extends State<MyEvents> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: (){
-
+            Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CreateEvent(managerId: manager_id)),
+            );
+            print("${manager_id}");
           },
           child: Icon(Icons.add),
           backgroundColor: Colors.red,
