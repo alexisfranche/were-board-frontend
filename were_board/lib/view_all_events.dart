@@ -6,6 +6,7 @@ import 'view_profile.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'Event.dart';
 
 class ViewAllEvents extends StatefulWidget {
   final String eventId;
@@ -14,33 +15,6 @@ class ViewAllEvents extends StatefulWidget {
       {this.eventId}); // Need a way to add event id to constructor from view events page (get the label element from the list?)
   @override
   ViewAllEventsState createState() => ViewAllEventsState();
-}
-
-class Event {
-  final String name;
-  final String description;
-  final String address;
-  final String datetime;
-  final int managerId;
-  final int id;
-
-  Event(
-      {this.name,
-      this.description,
-      this.address,
-      this.datetime,
-      this.managerId,
-      this.id});
-
-  factory Event.fromJson(Map<String, dynamic> json) {
-    return Event(
-        name: json['name'],
-        description: json['description'],
-        address: json['address'],
-        datetime: json['datetime'],
-        managerId: json['event_manager_id'] as int,
-        id: json['id']);
-  }
 }
 
 class ViewAllEventsState extends State<ViewAllEvents> {

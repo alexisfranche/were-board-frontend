@@ -166,11 +166,13 @@ class MyProfileState extends State<MyProfile> {
 class User {
   final String name;
   final String description;
+  final int id;
 
-  User({this.name, this.description});
+  User({this.id, this.name, this.description});
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
+      id: json['id'],
       name: json['name'],
       description: json['description'],
     );

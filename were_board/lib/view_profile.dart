@@ -118,6 +118,7 @@ class ViewProfileState extends State<ViewProfile> {
 }
 
 class User {
+
   String name;
   String email;
   String bio;
@@ -131,6 +132,7 @@ class User {
         email: json['email'],
         bio: json['description'],
         userId: json['id'] as int
+
     );
   }
 

@@ -6,6 +6,7 @@ import 'my_profile.dart';
 import 'apply_to_event.dart';
 import 'view_all_events.dart';
 import 'view_event.dart';
+import 'my_events.dart';
 
 class HomePage extends StatelessWidget {
   final String email;
@@ -43,7 +44,7 @@ class HomePage extends StatelessWidget {
             children: <Widget>[
               //replace Icon widgets by the appropriate widgets (pages) that need to be displayed.
               Container(
-                child: Icon(Icons.casino),
+                child: MyEvents(email: this.email),
                 color: Colors.white,
               ),
               //ViewProfile(), // Un-comment to test view profile page
