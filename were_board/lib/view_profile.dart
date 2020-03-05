@@ -121,7 +121,7 @@ class User {
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
       name: json['name'],
-      id: json['id'],
+      id: json['id'] as int,
     );
   }
 }

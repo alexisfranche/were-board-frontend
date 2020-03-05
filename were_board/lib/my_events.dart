@@ -1,42 +1,61 @@
 import 'package:flutter/material.dart';
-import 'package:getflutter/getflutter.dart';
-import 'view_profile.dart';
-
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'Event.dart';
 
-Future<User> fetchUser(String emailStr) async {
-  final response =
+  Future<List<Event>> fetchEvents(String emailStr) async {
+  List<Event> events;
+  var user;
+   final response1 =
       await http.get('https://were-board.herokuapp.com/email/' + emailStr);
-  //print("response : " + response.body);
-  if (response.statusCode == 200) {
+  if (response1.statusCode == 200) {
     // If the call to the server was successful, parse the JSON.
-    return User.fromJson(json.decode(response.body));
+    user = User.fromJson(json.decode(response1.body)).userId;
   } else {
     // If that call was not successful, throw an error.
     throw Exception('Failed to load profile');
+  }
+  // int manager_id;
+  // user.then((value) => manager_id = value.userId);
+  final response2 = await http.get('https://were-board.herokuapp.com/event/manager/$user');
+  if (response2.statusCode == 200) {
+    //print("response : " + response.body);
+    // If the call to the server was successful, parse the JSONArray into a list.
+    events = (json.decode(response2.body) as List)
+        .map((i) => Event.fromJson(i))
+        .toList();
+
+    return events;
+  } else {
+    // If that call was not successful, throw an error.
+    throw Exception('Failed to load post');
   }
 }
 
 class MyEvents extends StatefulWidget {
   final String email;
+  
+
   MyEvents({this.email});
   
   @override
-  ViewMyEventsState createState() => ViewMyEventsState();
+  ViewMyEventsState createState() => ViewMyEventsState(email: this.email);
 }
 
 class ViewMyEventsState extends State<MyEvents> {
+  final String email;
+
+  ViewMyEventsState({this.email});
+
   Future<List<Event>> events;
-  Future<List<User>> users;
-  Future<User> user;
+  Future<User> currentUser; 
+  int manager_id;
 
   @override
-  void initState() {
+  Future<void> initState(){
     super.initState();
-    events = fetchEvents();
+    events = fetchEvents(widget.email);
   }
 
   @override
@@ -67,9 +86,9 @@ class ViewMyEventsState extends State<MyEvents> {
                 padding: new EdgeInsets.all(6.0),
                 itemCount: availableEvents.length,
                 itemBuilder: (BuildContext context, int index) {
-                  user = fetchUserbyId(
-                      (availableEvents[index].managerId).toString());
-                  print("the user retrieved is" + user.toString());
+                  //user = fetchUserbyId(
+                  //    (availableEvents[index].managerId).toString());
+                  //print("the user retrieved is" + user.toString());
                   return new Container(
                       margin: new EdgeInsets.only(bottom: 6.0),
                       padding: new EdgeInsets.all(6.0),
@@ -94,7 +113,7 @@ class ViewMyEventsState extends State<MyEvents> {
                               int id = availableEvents[index].eventId;
                               final response = await http.delete('https://were-board.herokuapp.com/event/${id.toString()}');
                               setState(() {
-                                events = fetchEvents();
+                                events = fetchEvents(widget.email);
                               });
                             },
                             // Simply call joinEvent for event 'availableEvents[index]'
@@ -114,17 +133,20 @@ class ViewMyEventsState extends State<MyEvents> {
   }
 }
 
-Future<List<Event>> fetchEvents() async {
-  List<Event> events;
-  final response = await http.get('https://were-board.herokuapp.com/event');
-  if (response.statusCode == 200) {
-    //print("response : " + response.body);
-    // If the call to the server was successful, parse the JSONArray into a list.
-    return events = (json.decode(response.body) as List)
-        .map((i) => Event.fromJson(i))
-        .toList();
-  } else {
-    // If that call was not successful, throw an error.
-    throw Exception('Failed to load post');
+class User {
+  final int userId;
+
+  User({this.userId});
+
+  factory User.fromJson(Map<String, dynamic> json) {
+    var juserId = json['id'];
+
+    if(juserId == null){
+      juserId = -1;
+    }
+
+    return User(
+        userId: juserId
+    );
   }
 }
