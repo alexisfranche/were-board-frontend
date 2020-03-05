@@ -41,6 +41,9 @@ Future<User> fetchUserbyId(String id) async {
 
 class ViewProfileState extends State<ViewProfile> {
   Future<User> user;
+  final String email;
+
+  ViewProfileState({this.email});
 
   @override
   void initState() {
@@ -50,6 +53,7 @@ class ViewProfileState extends State<ViewProfile> {
 
   @override
   Widget build(BuildContext context) {
+    Color mySecondRed = const Color(0xFFC62828);
     final String imgUrl =
         'http://alefbetnyc.com/wp-content/uploads/2016/07/default-avatar.png';
     final double _radius = 100;
@@ -69,7 +73,7 @@ class ViewProfileState extends State<ViewProfile> {
             centerTitle: true,
             elevation: 0.0,
             title: Text("View profile"),
-            backgroundColor: Colors.redAccent,
+            backgroundColor: mySecondRed,
             automaticallyImplyLeading: false,
           ),
           body: new Center(
@@ -90,6 +94,7 @@ class ViewProfileState extends State<ViewProfile> {
                             fontWeight: FontWeight.bold,
                             height: _height,
                             fontSize: 50));
+
                   } else if (snapshot.hasError) {
                     return Text("${snapshot.error}");
                   }
@@ -113,15 +118,25 @@ class ViewProfileState extends State<ViewProfile> {
 }
 
 class User {
-  final int id;
-  final String name;
 
-  User({this.name, this.id});
+  String name;
+  String email;
+  String bio;
+  int userId;
+
+  User({this.name, this.email, this.bio, this.userId});
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
-      name: json['name'],
-      id: json['id'] as int,
+        name: json['name'],
+        email: json['email'],
+        bio: json['description'],
+        userId: json['id'] as int
+
     );
+  }
+
+  void setName(String name) {
+    this.name = name;
   }
 }
