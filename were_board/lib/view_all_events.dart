@@ -17,6 +17,33 @@ class ViewAllEvents extends StatefulWidget {
   ViewAllEventsState createState() => ViewAllEventsState();
 }
 
+class Event {
+  final String name;
+  final String description;
+  final String address;
+  final String datetime;
+  final int managerId;
+  final int id;
+
+  Event(
+      {this.name,
+      this.description,
+      this.address,
+      this.datetime,
+      this.managerId,
+      this.id});
+
+  factory Event.fromJson(Map<String, dynamic> json) {
+    return Event(
+        name: json['name'],
+        description: json['description'],
+        address: json['address'],
+        datetime: json['datetime'],
+        managerId: json['event_manager_id'] as int,
+        id: json['id']);
+  }
+}
+
 class ViewAllEventsState extends State<ViewAllEvents> {
   Future<List<Event>> events;
   Future<List<User>> users;
