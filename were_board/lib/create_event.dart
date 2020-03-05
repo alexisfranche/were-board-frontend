@@ -70,7 +70,7 @@ class CreateEvent extends StatelessWidget{
             'address': _fbKey.currentState.fields['address'].currentState.value,
             'game': _fbKey.currentState.fields['game'].currentState.value,
             'datetime': _fbKey.currentState.fields['datetime'].currentState.value,
-            'description': _fbKey.currentState.fields['decription'].currentState.value,
+            'description': _fbKey.currentState.fields['description'].currentState.value,
             'status': "upcoming",
             'event_manager_id': this.managerId};
             var bodyJSON = json.encode(body);
